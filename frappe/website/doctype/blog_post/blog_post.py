@@ -43,6 +43,7 @@ class BlogPost(WebsiteGenerator):
 		disable_likes: DF.Check
 		email_sent: DF.Check
 		enable_email_notification: DF.Check
+		english_content_copy: DF.TextEditor | None
 		featured: DF.Check
 		hide_cta: DF.Check
 		meta_description: DF.SmallText | None
