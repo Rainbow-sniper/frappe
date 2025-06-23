@@ -39,6 +39,9 @@ class BlogPost(WebsiteGenerator):
 		content_html: DF.HTMLEditor | None
 		content_md: DF.MarkdownEditor | None
 		content_type: DF.Literal["Markdown", "Rich Text", "HTML"]
+		content_vn: DF.TextEditor | None
+		content_vn_html: DF.HTMLEditor | None
+		content_vn_md: DF.MarkdownEditor | None
 		disable_comments: DF.Check
 		disable_likes: DF.Check
 		email_sent: DF.Check
@@ -53,7 +56,6 @@ class BlogPost(WebsiteGenerator):
 		read_time: DF.Int
 		route: DF.Data | None
 		title: DF.Data
-
 	# end: auto-generated types
 	@frappe.whitelist()
 	def make_route(self):
@@ -128,7 +130,7 @@ class BlogPost(WebsiteGenerator):
 			context.author = self.blogger
 
 		context.content = get_html_content_based_on_type(self, "content", self.content_type)
-
+		context.vn_content = get_html_content_based_on_type(self, "content_vn", self.content_type)
 		# if meta description is not present, then blog intro or first 140 characters of the blog will be set as description
 		context.description = (
 			self.meta_description or self.blog_intro or strip_html_tags(context.content[:140])

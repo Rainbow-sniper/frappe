@@ -98,7 +98,10 @@
 		</div>
 	{% endif %}
 
-	{% include "templates/includes/navbar/navbar_login.html" %}
+	<div class="language-switcher">
+		<span data-lang="vi">VI</span> | <span data-lang="en">EN</span>
+	  </div>
+	  
 
 </ul>
 {%- if call_to_action -%}
@@ -106,3 +109,26 @@
 	{{ call_to_action }}
 </a>
 {%- endif -%}
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+	  const langItems = document.querySelectorAll(".language-switcher span");
+	  const currentLang = localStorage.getItem("lang") || "en"; // mặc định là "en"
+  
+	  // Thêm class selected vào ngôn ngữ đang được chọn
+	  langItems.forEach(item => {
+		if (item.dataset.lang === currentLang) {
+		  item.classList.add("selected");
+		}
+  
+		// Bắt sự kiện click để đổi ngôn ngữ
+		item.addEventListener("click", () => {
+		  if (item.dataset.lang !== currentLang) {
+			localStorage.setItem("lang", item.dataset.lang);
+			location.reload(); // reload lại trang để áp dụng lang mới
+		  }
+		});
+	  });
+	});
+  </script>
+  

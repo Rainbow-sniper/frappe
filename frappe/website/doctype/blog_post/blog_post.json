@@ -27,6 +27,9 @@
   "content_md",
   "content_html",
   "email_sent",
+  "content_vn",
+  "content_vn_md",
+  "content_vn_html",
   "meta_tags",
   "meta_title",
   "meta_description",
@@ -207,6 +210,25 @@
    "fieldname": "disable_likes",
    "fieldtype": "Check",
    "label": "Disable Likes"
+  },
+  {
+   "depends_on": "eval:doc.content_type === 'Rich Text'",
+   "fieldname": "content_vn",
+   "fieldtype": "Text Editor",
+   "label": "Vietnamese Content"
+  },
+  {
+   "depends_on": "eval:doc.content_type === 'Markdown'",
+   "fieldname": "content_vn_md",
+   "fieldtype": "Markdown Editor",
+   "label": "Vietnamese Content(Markdown)",
+   "mandatory_depends_on": "eval:doc.content_type === 'Markdown'"
+  },
+  {
+   "depends_on": "eval:doc.content_type === 'HTML'",
+   "fieldname": "content_vn_html",
+   "fieldtype": "HTML Editor",
+   "label": "Vietnnamese Content(HTML)"
   }
  ],
  "has_web_view": 1,
@@ -216,7 +238,7 @@
  "is_published_field": "published",
  "links": [],
  "make_attachments_public": 1,
- "modified": "2023-02-17 11:31:32.223524",
+ "modified": "2025-06-23 14:02:42.460264",
  "modified_by": "Administrator",
  "module": "Website",
  "name": "Blog Post",
@@ -245,6 +267,7 @@
   }
  ],
  "route": "blog",
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "ASC",
  "states": [],

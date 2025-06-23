@@ -27,8 +27,13 @@
 			</div>
 		</div>
 		<hr class="my-5">
-		<div itemprop="articleBody" class="from-markdown">
-			{{ content }}
+		<div itemprop="articleBody">
+			<div id="content-vn" class="from-markdown" style="display: none;">
+				{{ content_vn }}
+			</div>
+			<div id="content-en" class="from-markdown" style="display: none;">
+				{{ content }}
+			</div>
 		</div>
 		<!-- end blog content -->
 	</article>
@@ -85,6 +90,12 @@
 					scrollTop: $(hash).offset().top - 100
 				}, 900, 'swing');
 			}
+		}
+		const lang = localStorage.getItem("lang");
+		if (lang === "vi") {
+			document.getElementById("content-vn").style.display = "block";
+		} else {
+			document.getElementById("content-en").style.display = "block";
 		}
 	})
 </script>

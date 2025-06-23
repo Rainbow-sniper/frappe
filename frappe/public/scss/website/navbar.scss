@@ -155,3 +155,16 @@
 		vertical-align: middle;
 	}
 }
+
+.language-switcher {
+	span {
+	  cursor: pointer;
+	  padding: 0 5px;
+  
+	  &.selected {
+		font-weight: bold;
+		text-decoration: underline;
+	  }
+	}
+  }
+  
